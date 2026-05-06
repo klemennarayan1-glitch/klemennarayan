@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Tugas</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-page:       #f4f3f0;
+      --bg-card:       #ffffff;
+      --bg-secondary:  #f0efe9;
+      --text-primary:  #1a1a18;
+      --text-secondary:#6b6b66;
+      --text-muted:    #9e9e99;
+      --border:        rgba(0,0,0,0.1);
+      --border-hover:  rgba(0,0,0,0.22);
+      --accent:        #1a1a18;
+      --accent-fg:     #ffffff;
+      --radius-md:     8px;
+      --radius-lg:     12px;
+    }
+
+    [data-theme="dark"] {
+      --bg-page:       #1a1a18;
+      --bg-card:       #242422;
+      --bg-secondary:  #2e2e2b;
+      --text-primary:  #f0efe9;
+      --text-secondary:#a0a09a;
+      --text-muted:    #68685f;
+      --border:        rgba(255,255,255,0.1);
+      --border-hover:  rgba(255,255,255,0.22);
+      --accent:        #f0efe9;
+      --accent-fg:     #1a1a18;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      min-height: 100vh;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    /* ===== LAYOUT ===== */
+    .wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .header-left h1 {
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-left p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+    .btn-theme {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 18px;
+      transition: background 0.15s;
+    }
+    .btn-theme:hover { background: var(--bg-secondary); }
+
+    /* ===== STATS ===== */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* ===== INPUT AREA ===== */
+    .input-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 1rem;
+    }
+    .input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .input-row input[type="text"] {
+      flex: 1;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 9px 12px;
+      font-size: 14px;
+      font-family: inherit;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .input-row input[type="text"]:focus { border-color: var(--border-hover); }
+    .input-row input[type="text"]::placeholder { color: var(--text-muted); }
+
+    .btn-add {
+      background: var(--accent);
+      color: var(--accent-fg);
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 9px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+    .btn-add:hover { opacity: 0.82; }
+
+    .select-row {
+      display: flex;
+      gap: 8px;
+    }
+    .select-row select {
+      flex: 1;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 7px 10px;
+      font-size: 13px;
+      font-family: inherit;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* ===== FILTER TABS ===== */
+    .filters {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .filter-btn {
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 13px;
+      font-family: inherit;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+    .filter-btn.active {
+      background: var(--accent);
+      color: var(--accent-fg);
+      border-color: transparent;
+    }
+
+    /* ===== TASK LIST ===== */
+    .task-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .task-item {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 13px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: slideIn 0.18s ease;
+      transition: opacity 0.15s;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .task-item.done { opacity: 0.65; }
+    .task-item.done .task-text {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    /* Checkbox */
+    .task-check {
+      width: 22px; height: 22px;
+      border: 1.5px solid var(--border-hover);
+      border-radius: 50%;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .task-check:hover { border-color: var(--accent); }
+    .task-check.checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .task-check.checked i { color: var(--accent-fg); font-size: 13px; }
+
+    /* Body */
+    .task-body { flex: 1; min-width: 0; }
+    .task-text { font-size: 14px; color: var(--text-primary); word-break: break-word; }
+
+    .task-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 5px;
+      flex-wrap: wrap;
+    }
+
+    /* Priority dot */
+    .pri-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .p-tinggi { background: #E24B4A; }
+    .p-sedang  { background: #EF9F27; }
+    .p-rendah  { background: #639922; }
+
+    /* Category badge */
+    .badge {
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+    .badge-kerja   { background: #E6F1FB; color: #0C447C; }
+    .badge-pribadi { background: #EEEDFE; color: #3C3489; }
+    .badge-belanja { background: #EAF3DE; color: #27500A; }
+    .badge-lainnya { background: #F1EFE8; color: #444441; }
+
+    [data-theme="dark"] .badge-kerja   { background: #0C447C44; color: #85B7EB; }
+    [data-theme="dark"] .badge-pribadi { background: #3C348944; color: #AFA9EC; }
+    [data-theme="dark"] .badge-belanja { background: #27500A44; color: #97C459; }
+    [data-theme="dark"] .badge-lainnya { background: #44444144; color: #B4B2A9; }
+
+    .task-date {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Actions */
+    .task-actions { display: flex; gap: 4px; }
+    .btn-icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-md);
+      color: var(--text-muted);
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      transition: background 0.12s, color 0.12s;
+    }
+    .btn-icon:hover { background: var(--bg-secondary); color: var(--text-primary); }
+    .btn-icon.del:hover { color: #E24B4A; background: #FCEBEB33; }
+
+    /* Edit input inline */
+    .edit-input {
+      font-size: 14px;
+      font-family: inherit;
+      border: 0.5px solid var(--border-hover);
+      border-radius: 6px;
+      padding: 4px 8px;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      width: 100%;
+      outline: none;
+    }
+
+    /* Empty state */
+    .empty {
+      text-align: center;
+      padding: 3.5rem 1rem;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .empty i { font-size: 36px; display: block; margin-bottom: 10px; color: var(--border-hover); }
+
+    /* Progress bar */
+    .progress-bar-wrap {
+      background: var(--bg-secondary);
+      border-radius: 20px;
+      height: 5px;
+      margin-bottom: 1.2rem;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 20px;
+      transition: width 0.3s ease;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <h1><i class="ti ti-checkbox"></i> Daftar Tugas</h1>
+      <p id="date-label"></p>
+    </div>
+    <button class="btn-theme" id="theme-toggle" title="Ganti tema">
+      <i class="ti ti-moon" id="theme-icon"></i>
+    </button>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-num" id="s-total">0</div>
+      <div class="stat-label">Total</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="s-selesai">0</div>
+      <div class="stat-label">Selesai</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="s-pending">0</div>
+      <div class="stat-label">Pending</div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+  </div>
+
+  <!-- INPUT -->
+  <div class="input-card">
+    <div class="input-row">
+      <input type="text" id="new-task" placeholder="Tulis tugas baru di sini..." maxlength="150" />
+      <button class="btn-add" onclick="addTask()">
+        <i class="ti ti-plus"></i> Tambah
+      </button>
+    </div>
+    <div class="select-row">
+      <select id="cat-select">
+        <option value="kerja">📁 Kerja</option>
+        <option value="pribadi">👤 Pribadi</option>
+        <option value="belanja">🛒 Belanja</option>
+        <option value="lainnya">📌 Lainnya</option>
+      </select>
+      <select id="pri-select">
+        <option value="tinggi">🔴 Prioritas Tinggi</option>
+        <option value="sedang" selected>🟡 Prioritas Sedang</option>
+        <option value="rendah">🟢 Prioritas Rendah</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <button class="filter-btn active" onclick="setFilter('semua',this)">Semua</button>
+    <button class="filter-btn" onclick="setFilter('pending',this)">Pending</button>
+    <button class="filter-btn" onclick="setFilter('selesai',this)">Selesai</button>
+    <button class="filter-btn" onclick="setFilter('kerja',this)">Kerja</button>
+    <button class="filter-btn" onclick="setFilter('pribadi',this)">Pribadi</button>
+    <button class="filter-btn" onclick="setFilter('belanja',this)">Belanja</button>
+    <button class="filter-btn" onclick="setFilter('lainnya',this)">Lainnya</button>
+  </div>
+
+  <!-- TASK LIST -->
+  <div class="task-list" id="task-list"></div>
+
+</div>
+
+<script>
+  // ===== STATE =====
+  let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  let nextId = parseInt(localStorage.getItem('nextId') || '1');
+  let currentFilter = 'semua';
+  let editingId = null;
+
+  // Seed contoh jika kosong
+  if (tasks.length === 0) {
+    tasks = [
+      { id: nextId++, text: 'Selesaikan laporan bulanan', cat: 'kerja', pri: 'tinggi', done: false, date: todayStr() },
+      { id: nextId++, text: 'Beli bahan makanan untuk minggu ini', cat: 'belanja', pri: 'sedang', done: false, date: todayStr() },
+      { id: nextId++, text: 'Olahraga pagi 30 menit', cat: 'pribadi', pri: 'rendah', done: true, date: todayStr() },
+    ];
+    save();
+  }
+
+  // ===== UTILS =====
+  function todayStr() {
+    return new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  function save() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('nextId', String(nextId));
+  }
+
+  // ===== DATE HEADER =====
+  document.getElementById('date-label').textContent =
+    new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+  // ===== DARK MODE =====
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  let isDark = localStorage.getItem('theme') === 'dark';
+  applyTheme();
+
+  themeBtn.addEventListener('click', () => {
+    isDark = !isDark;
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    applyTheme();
+  });
+
+  function applyTheme() {
+    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    themeIcon.className = isDark ? 'ti ti-sun' : 'ti ti-moon';
+  }
+
+  // ===== ENTER KEY =====
+  document.getElementById('new-task').addEventListener('keydown', e => {
+    if (e.key === 'Enter') addTask();
+  });
+
+  // ===== ADD TASK =====
+  function addTask() {
+    const input = document.getElementById('new-task');
+    const text = input.value.trim();
+    if (!text) { input.focus(); return; }
+
+    tasks.unshift({
+      id: nextId++,
+      text,
+      cat: document.getElementById('cat-select').value,
+      pri: document.getElementById('pri-select').value,
+      done: false,
+      date: todayStr()
+    });
+
+    input.value = '';
+    input.focus();
+    save();
+    render();
+  }
+
+  // ===== TOGGLE DONE =====
+  function toggleDone(id) {
+    const t = tasks.find(t => t.id === id);
+    if (t) t.done = !t.done;
+    save();
+    render();
+  }
+
+  // ===== DELETE =====
+  function deleteTask(id) {
+    if (!confirm('Hapus tugas ini?')) return;
+    tasks = tasks.filter(t => t.id !== id);
+    if (editingId === id) editingId = null;
+    save();
+    render();
+  }
+
+  // ===== EDIT =====
+  function startEdit(id) {
+    editingId = id;
+    render();
+    const inp = document.getElementById('edit-' + id);
+    if (inp) { inp.focus(); inp.select(); }
+  }
+
+  function saveEdit(id) {
+    const inp = document.getElementById('edit-' + id);
+    if (!inp) return;
+    const val = inp.value.trim();
+    if (val) {
+      const t = tasks.find(t => t.id === id);
+      if (t) t.text = val;
+    }
+    editingId = null;
+    save();
+    render();
+  }
+
+  // ===== FILTER =====
+  function setFilter(f, btn) {
+    currentFilter = f;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  }
+
+  function getFiltered() {
+    switch (currentFilter) {
+      case 'selesai': return tasks.filter(t => t.done);
+      case 'pending': return tasks.filter(t => !t.done);
+      case 'kerja':
+      case 'pribadi':
+      case 'belanja':
+      case 'lainnya':
+        return tasks.filter(t => t.cat === currentFilter);
+      default: return tasks;
+    }
+  }
+
+  // ===== RENDER =====
+  function render() {
+    // Stats
+    const total = tasks.length;
+    const selesai = tasks.filter(t => t.done).length;
+    const pending = total - selesai;
+    document.getElementById('s-total').textContent = total;
+    document.getElementById('s-selesai').textContent = selesai;
+    document.getElementById('s-pending').textContent = pending;
+
+    // Progress
+    const pct = total > 0 ? Math.round((selesai / total) * 100) : 0;
+    document.getElementById('progress-fill').style.width = pct + '%';
+
+    // List
+    const list = document.getElementById('task-list');
+    const filtered = getFiltered();
+
+    if (filtered.length === 0) {
+      list.innerHTML = `
+        <div class="empty">
+          <i class="ti ti-mood-empty"></i>
+          Tidak ada tugas di sini.
+        </div>`;
+      return;
+    }
+
+    const catLabel = { kerja: 'Kerja', pribadi: 'Pribadi', belanja: 'Belanja', lainnya: 'Lainnya' };
+    const priLabel = { tinggi: 'Tinggi', sedang: 'Sedang', rendah: 'Rendah' };
+
+    list.innerHTML = filtered.map(t => {
+      const isEditing = editingId === t.id;
+      const escapedText = t.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+      return `
+        <div class="task-item${t.done ? ' done' : ''}" id="item-${t.id}">
+
+          <div class="task-check ${t.done ? 'checked' : ''}"
+               onclick="toggleDone(${t.id})"
+               role="checkbox"
+               aria-checked="${t.done}"
+               aria-label="Tandai selesai"
+               tabindex="0"
+               onkeydown="if(event.key==='Enter'||event.key===' ')toggleDone(${t.id})">
+            ${t.done ? '<i class="ti ti-check"></i>' : ''}
+          </div>
+
+          <div class="task-body">
+            ${isEditing
+              ? `<input class="edit-input" id="edit-${t.id}"
+                   value="${escapedText}"
+                   onblur="saveEdit(${t.id})"
+                   onkeydown="if(event.key==='Enter')saveEdit(${t.id});else if(event.key==='Escape'){editingId=null;render();}" />`
+              : `<div class="task-text">${t.text}</div>`
+            }
+            <div class="task-meta">
+              <div class="pri-dot p-${t.pri}" title="Prioritas ${priLabel[t.pri]}"></div>
+              <span class="badge badge-${t.cat}">${catLabel[t.cat]}</span>
+              <span class="task-date">${t.date}</span>
+            </div>
+          </div>
+
+          <div class="task-actions">
+            ${!t.done
+              ? `<button class="btn-icon" onclick="startEdit(${t.id})" title="Edit tugas" aria-label="Edit">
+                   <i class="ti ti-pencil"></i>
+                 </button>`
+              : ''}
+            <button class="btn-icon del" onclick="deleteTask(${t.id})" title="Hapus tugas" aria-label="Hapus">
+              <i class="ti ti-trash"></i>
+            </button>
+          </div>
+
+        </div>`;
+    }).join('');
+  }
+
+  // ===== INIT =====
+  render();
+</script>
+</body>
+</html>
