@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#12060a">
+<meta name="description" content="Demokrasi di Era Keterbukaan Informasi - Media pembelajaran PPKn SMKN 7">
+<title>Demokrasi Merdeka | PPKn SMKN 7</title>
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+:root{--red:#ff2e4d;--deep:#12060a;--wine:#2a0a14;--gold:#ffc83d;--glass:rgba(255,255,255,.07);--line:rgba(255,255,255,.14);--text:#f6eeee;--mut:#c9b6ba}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--deep);color:var(--text);line-height:1.7;overflow-x:hidden}
+body:before{content:"";position:fixed;top:0;right:0;bottom:0;left:0;z-index:-1;background:radial-gradient(800px 500px at 15% 0%,rgba(255,46,77,.28),transparent 60%),radial-gradient(700px 500px at 100% 40%,rgba(255,200,61,.12),transparent 60%),linear-gradient(180deg,var(--deep),var(--wine) 70%,var(--deep))}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--red),var(--gold));z-index:50}
+nav{position:fixed;top:12px;left:0;right:0;margin:0 auto;width:max-content;max-width:calc(100vw - 16px);z-index:40;display:flex;gap:2px;padding:6px;background:rgba(20,8,12,.85);background:rgba(20,8,12,.65);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:40px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;padding:8px 14px;border-radius:30px;white-space:nowrap;transition:.25s}
+nav a:hover,nav a.on{background:linear-gradient(135deg,var(--red),#b3122e)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:980px;margin:auto;padding:0 20px}
+
+/* HERO */
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;position:relative;overflow:hidden}
+.cloud{position:absolute;height:60px;border-radius:60px;background:rgba(255,255,255,.07);-webkit-filter:blur(6px);filter:blur(6px);animation:drift linear infinite}
+.c1{width:220px;top:18%;animation-duration:38s}
+.c2{width:320px;top:62%;animation-duration:55s;animation-delay:-20s}
+.c3{width:160px;top:40%;animation-duration:30s;animation-delay:-8s}
+@keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(130vw)}}
+.glow{position:absolute;top:50%;left:50%;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,61,.35),transparent 65%);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.15);opacity:.7}}
+.garuda{display:block;margin:0 auto;overflow:visible;width:min(330px,72vw);position:relative;z-index:2;animation:floating 4s ease-in-out infinite;-webkit-filter:drop-shadow(0 18px 30px rgba(0,0,0,.55));filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
+@keyframes floating{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-22px) rotate(1deg)}}
+.wl,.wr{transform-box:view-box;transform-origin:92px 78px;animation:flapL .9s ease-in-out infinite}
+.wr{transform-origin:108px 78px;animation-name:flapR}
+@keyframes flapL{0%,100%{transform:rotate(14deg) scaleY(.92)}50%{transform:rotate(-16deg) scaleY(1.06)}}
+@keyframes flapR{0%,100%{transform:rotate(-14deg) scaleY(.92)}50%{transform:rotate(16deg) scaleY(1.06)}}
+.tail{transform-box:view-box;transform-origin:100px 150px;animation:tailSway 1.8s ease-in-out infinite}
+@keyframes tailSway{50%{transform:rotate(5deg)}}
+.flag{display:inline-block;width:18px;height:12px;border-radius:2px;background:linear-gradient(#e70011 50%,#fff 50%);vertical-align:-1px;margin-right:8px;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
+.chip{position:relative;z-index:2;margin-top:18px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(255,200,61,.4);padding:6px 16px;border-radius:30px;background:rgba(255,200,61,.08)}
+h1{position:relative;z-index:2;font-size:clamp(36px,8vw,76px);line-height:1.05;margin:16px 0;font-weight:800;letter-spacing:-.02em}
+.grad{background:linear-gradient(90deg,var(--red),var(--gold));-webkit-background-clip:text;background-clip:text;color:var(--gold);color:transparent;-webkit-text-fill-color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lead{position:relative;z-index:2;max-width:620px;color:var(--mut);font-size:18px}
+.cta{position:relative;z-index:2;margin-top:28px;display:inline-block;text-decoration:none;color:#fff;font-weight:700;padding:14px 30px;border-radius:40px;background:linear-gradient(135deg,var(--red),#b3122e);box-shadow:0 10px 30px rgba(255,46,77,.4);transition:.25s}
+.cta:hover{transform:translateY(-3px) scale(1.03)}
+.scroll{position:absolute;bottom:22px;left:0;right:0;text-align:center;z-index:2;color:var(--mut);font-size:12px;letter-spacing:.2em;animation:scrollBob 2s ease-in-out infinite}
+@keyframes scrollBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* GARUDA KECIL TERBANG */
+.flyer{position:fixed;bottom:6px;left:-120px;width:80px;z-index:30;pointer-events:none;animation:fly 24s linear infinite;animation-delay:6s;opacity:.95}
+.flyer .garuda{width:100%;animation:none;-webkit-filter:drop-shadow(0 6px 10px rgba(0,0,0,.5));filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))}
+@keyframes fly{0%{transform:translate(0,0)}25%{transform:translate(28vw,-8px)}50%{transform:translate(55vw,0)}75%{transform:translate(82vw,-8px)}100%{transform:translate(calc(100vw + 240px),0)}}
+
+/* SECTIONS */
+section{padding:90px 0}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+h2{font-size:clamp(28px,5vw,44px);line-height:1.15;margin-bottom:12px;letter-spacing:-.01em}
+.sub{color:var(--mut);margin-bottom:34px;max-width:620px}
+.glass{background:rgba(40,20,26,.55);background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:26px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:.3s}
+.glass:hover{transform:translateY(-6px);border-color:rgba(255,200,61,.5)}
+.def{background:linear-gradient(135deg,rgba(255,46,77,.3),rgba(255,200,61,.12));font-size:18px}
+.glass.def:hover{transform:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:22px}
+.ic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:26px;background:linear-gradient(135deg,var(--red),#b3122e);margin-bottom:14px}
+.glass h3{font-size:20px;margin-bottom:6px}
+.glass p,.glass li{color:var(--mut)}
+ul{padding-left:20px}
+li{margin:8px 0}
+.prob{border-left:5px solid var(--gold);margin-bottom:22px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tabs button{cursor:pointer;font:600 14px 'Segoe UI',system-ui,sans-serif;color:var(--text);background:var(--glass);border:1px solid var(--line);padding:10px 20px;border-radius:30px;transition:.25s}
+.tabs button:hover{border-color:rgba(255,200,61,.5)}
+.tabs button.on{background:linear-gradient(135deg,var(--red),#b3122e);border-color:transparent}
+.panel{display:none;animation:panelIn .4s}
+.panel.on{display:block}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tl{position:relative;padding-left:34px}
+.tl:before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--red),var(--gold))}
+.tl .glass{margin-bottom:18px;position:relative}
+.tl .glass:before{content:attr(data-n);position:absolute;left:-34px;top:22px;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#3b2a00;font-weight:800;font-size:13px;display:grid;place-items:center}
+
+/* POSTER */
+.slogan{font-size:clamp(24px,5vw,44px);font-weight:800;line-height:1.2;text-align:center;margin:10px 0 36px}
+.poster{max-width:400px;margin:0 auto 30px;border-radius:26px;overflow:hidden;background:linear-gradient(170deg,#ff2e4d,#8f0b20 60%,#2a0a14);text-align:center;padding:28px 22px;border:2px solid rgba(255,200,61,.6);box-shadow:0 30px 60px rgba(255,46,77,.25)}
+.poster .garuda{width:130px;animation-duration:5s}
+.poster h4{font-size:30px;line-height:1.1;margin:10px 0}
+.poster p{opacity:.92}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
+.rules div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 6px;font-size:13px;font-weight:600}
+.tagline{font-size:12px;color:var(--gold);font-weight:700;letter-spacing:.06em}
+.pledge{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.pledge input{flex:1;min-width:200px;max-width:300px;padding:13px 18px;border-radius:30px;border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--text);font:inherit;font-size:15px;outline:none}
+.pledge input::placeholder{color:var(--mut)}
+.pledge input:focus{border-color:var(--gold)}
+.pledge button{cursor:pointer;border:0;padding:13px 26px;border-radius:30px;font:inherit;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--red),#b3122e);transition:.25s}
+.pledge button:hover{transform:translateY(-2px)}
+#pl{margin-top:14px;font-weight:700;color:var(--gold);min-height:28px;text-align:center}
+.center{text-align:center}
+.members{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.mem{text-align:center}
+.mem h3{font-size:18px;margin:10px 0 2px}
+.av{width:68px;height:68px;margin:auto;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:22px;color:#3b2a00;background:linear-gradient(135deg,var(--gold),#ff9d2e);box-shadow:0 0 0 4px rgba(255,200,61,.2)}
+footer{text-align:center;padding:40px 20px;color:var(--mut);border-top:1px solid var(--line);font-size:14px}
+
+/* SCROLL REVEAL */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.show{opacity:1;transform:none}
+.glass.rv.show:hover{transform:translateY(-6px);border-color:rgba(255,200,61,.5);transition:transform .3s ease,border-color .3s ease,opacity .8s ease}
+.glass.def.rv.show:hover{transform:none}
+
+/* RESPONSIVE */
+@media (max-width:600px){
+  nav a{font-size:12px;padding:7px 11px}
+  section{padding:70px 0}
+  .glass{padding:22px}
+  .poster h4{font-size:26px}
+}
+@media (max-height:600px){.scroll{display:none}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<!-- Sumber gambar Garuda (disalin oleh JavaScript ke setiap <svg class="garuda">) -->
+<svg id="garudaSrc" width="0" height="0" aria-hidden="true" focusable="false" style="display:none">
+<g id="garudaArt">
+  <g class="tail"><path d="M84 150 L78 190 L92 182 L100 196 L108 182 L122 190 L116 150Z" fill="#e6a916" stroke="#7a5500" stroke-width="1.5"/></g>
+  <g class="wl" stroke="#7a5500" stroke-width="1.5">
+    <path d="M92 70 L14 36 L24 60 L6 66 L24 84 L10 96 L30 110 L20 124 L48 128 L92 122Z" fill="#e6a916"/>
+    <path d="M92 72 L28 52 L36 70 L20 78 L40 92 L30 106 L92 110Z" fill="#ffc83d"/>
+  </g>
+  <g class="wr" stroke="#7a5500" stroke-width="1.5">
+    <path d="M108 70 L186 36 L176 60 L194 66 L176 84 L190 96 L170 110 L180 124 L152 128 L108 122Z" fill="#e6a916"/>
+    <path d="M108 72 L172 52 L164 70 L180 78 L160 92 L170 106 L108 110Z" fill="#ffc83d"/>
+  </g>
+  <path d="M88 54 Q88 30 104 26 Q116 26 118 36 L134 40 L120 47 Q118 57 112 63 L88 63Z" fill="#ffc83d" stroke="#7a5500" stroke-width="1.5"/>
+  <circle cx="108" cy="38" r="2.6" fill="#111"/>
+  <path d="M74 66H126V120Q126 146 100 156Q74 146 74 120Z" fill="#fff" stroke="#111" stroke-width="3"/>
+  <path d="M74 66H100V110H74Z" fill="#c8102e"/>
+  <path d="M100 110H126V120Q126 142 100 156Z" fill="#c8102e"/>
+  <path d="M74 110H100V148Q86 142 74 120Z" fill="#fff"/>
+  <rect x="74" y="97" width="52" height="8" fill="#111"/>
+  <circle cx="100" cy="101" r="13" fill="#111"/>
+  <path d="M100 91L103 98H110L104.5 102.5L106.5 109.5L100 105.5L93.5 109.5L95.5 102.5L90 98H97Z" fill="#ffd21a"/>
+  <circle cx="87" cy="80" r="6" fill="#ffd21a"/>
+  <circle cx="113" cy="82" r="5" fill="#c8102e" stroke="#111" stroke-width="1.5"/>
+  <circle cx="87" cy="130" r="5" fill="#fff" stroke="#111" stroke-width="1.5"/>
+  <circle cx="113" cy="132" r="5" fill="#ffd21a"/>
+  <path d="M60 172H140L146 180L140 188H60L54 180Z" fill="#fff" stroke="#111" stroke-width="2"/>
+  <text x="100" y="183" font-size="7" font-weight="700" text-anchor="middle" fill="#111" font-family="Arial,Helvetica,sans-serif" textLength="76" lengthAdjust="spacingAndGlyphs">BHINNEKA TUNGGAL IKA</text>
+</g>
+</svg>
+
+<nav id="nav" aria-label="Navigasi utama">
+  <a href="#home">Beranda</a><a href="#perilaku">Perilaku</a><a href="#era">Era Informasi</a><a href="#solusi">Solusi</a><a href="#kampanye">Kampanye</a><a href="#kelompok">Kelompok</a>
+</nav>
+
+<div class="flyer" aria-hidden="true"><svg class="garuda" viewBox="0 0 200 200"></svg></div>
+
+<header class="hero" id="home">
+  <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+  <div class="glow"></div>
+  <svg class="garuda" viewBox="0 0 200 200" role="img" aria-label="Garuda Pancasila terbang"></svg>
+  <span class="chip"><i class="flag"></i>Dirgahayu Republik Indonesia</span>
+  <h1>Demokrasi Itu <span class="grad">Cara Kita Merdeka</span></h1>
+  <p class="lead">Merdeka berarti bebas berpendapat dengan bertanggung jawab. Pelajari perilaku demokratis di era keterbukaan informasi — PPKn SMKN 7.</p>
+  <a class="cta" href="#perilaku">Mulai Belajar ↓</a>
+  <div class="scroll">SCROLL</div>
+</header>
+
+<section id="perilaku"><div class="wrap">
+  <div class="rv"><span class="tag">Materi 2</span><h2>Perilaku <span class="grad">Demokratis</span></h2>
+  <p class="sub">Pengertian dan contoh dalam kehidupan sehari-hari.</p></div>
+  <div class="glass def rv"><h3 style="color:var(--gold)">Pengertian</h3>
+    <p style="color:var(--text)">Sikap dan tindakan yang menghargai persamaan hak, kewajiban, serta kebebasan berpendapat dengan tetap mengutamakan musyawarah, keadilan, toleransi, dan rasa tanggung jawab dalam kehidupan bermasyarakat, berbangsa, dan bernegara.</p></div>
+  <div class="grid">
+    <div class="glass rv"><div class="ic">🏫</div><h3>Di Sekolah</h3><p>Memilih ketua OSIS atau ketua kelas lewat voting atau musyawarah mufakat secara jujur dan adil.</p></div>
+    <div class="glass rv"><div class="ic">🏠</div><h3>Di Rumah</h3><p>Diskusi keluarga untuk menentukan tujuan liburan atau pembagian tugas rumah secara adil tanpa pemaksaan kehendak.</p></div>
+    <div class="glass rv"><div class="ic">🤝</div><h3>Di Masyarakat</h3><p>Ikut gotong royong, berani menyampaikan pendapat, dan menerima hasil keputusan rapat RT/RW dengan lapang dada.</p></div>
+  </div>
+</div></section>
+
+<section id="era"><div class="wrap">
+  <div class="rv"><span class="tag">Materi 3</span><h2>Demokrasi di Era <span class="grad">Keterbukaan Informasi</span></h2>
+  <p class="sub">Analisis masalah yang dekat dengan kehidupan kita.</p></div>
+  <div class="glass prob rv"><h3>⚠️ Masalah</h3><p>Penyebaran hoaks (berita bohong) dan ujaran kebencian (<i>hate speech</i>) menjelang pemilihan ketua OSIS melalui media sosial dan grup WhatsApp.</p></div>
+  <div class="tabs rv" id="tabs" role="tablist" aria-label="Analisis masalah">
+    <button type="button" role="tab" class="on" data-t="p1" aria-controls="p1" aria-selected="true">Penyebab</button>
+    <button type="button" role="tab" data-t="p2" aria-controls="p2" aria-selected="false">Dampak</button>
+    <button type="button" role="tab" data-t="p3" aria-controls="p3" aria-selected="false">Kaitan Demokrasi</button>
+    <button type="button" role="tab" data-t="p4" aria-controls="p4" aria-selected="false">Solusi</button>
+  </div>
+  <div class="glass panel on" id="p1" role="tabpanel"><h3>Penyebab</h3><ul>
+    <li>Rendahnya literasi digital sehingga siswa mudah terprovokasi informasi yang belum jelas kebenarannya.</li>
+    <li>Keinginan memenangkan calon tertentu dengan cara tidak sehat (<i>black campaign</i>).</li>
+    <li>Kemudahan menyebarkan informasi tanpa verifikasi terlebih dahulu.</li></ul></div>
+  <div class="glass panel" id="p2" role="tabpanel"><h3>Dampak</h3><ul>
+    <li>Muncul kubu-kubu perselisihan dan perpecahan antar siswa.</li>
+    <li>Terjadi <i>cyberbullying</i> yang merugikan mental kandidat atau pendukungnya.</li>
+    <li>Proses demokrasi sekolah terdistorsi; pemilih tidak objektif menilai visi dan misi calon.</li></ul></div>
+  <div class="glass panel" id="p3" role="tabpanel"><h3>Kaitan dengan Perilaku Demokratis</h3>
+    <p>Menyebarkan hoaks dan fitnah merusak esensi demokrasi yang menjunjung tinggi kebenaran, kebebasan yang bertanggung jawab, serta rasa saling menghargai pendapat. Demokrasi yang sehat membutuhkan warga yang kritis, jujur, dan beretika dalam berinformasi.</p></div>
+  <div class="glass panel" id="p4" role="tabpanel"><h3>Solusi</h3>
+    <p>Mengembangkan budaya verifikasi (<b style="color:var(--gold)">"saring sebelum sharing"</b>), mengadakan edukasi literasi digital, serta menetapkan aturan kampanye sehat yang disepakati bersama oleh seluruh kandidat dan warga sekolah.</p></div>
+</div></section>
+
+<section id="solusi"><div class="wrap">
+  <div class="rv"><span class="tag">Materi 4</span><h2>Solusi <span class="grad">Kelompok</span></h2>
+  <p class="sub">Langkah realistis yang bisa dilakukan siswa SMKN 7 yang berkarakter dan melek teknologi.</p></div>
+  <div class="tl">
+    <div class="glass rv" data-n="1"><h3>Tim "Cek Fakta" Independen OSIS/Pramuka</h3><p>Memanfaatkan keahlian siswa (misalnya jurusan PPLG/SIJA) untuk membuat sistem klarifikasi cepat atau kanal pengaduan hoaks seputar isu sekolah.</p></div>
+    <div class="glass rv" data-n="2"><h3>Gerakan Internet Sehat dan Beretika di Kelas</h3><p>Mengalokasikan 5–10 menit saat jam wali kelas untuk berbagi tips memilah berita valid dan pentingnya etika berpendapat di media sosial.</p></div>
+    <div class="glass rv" data-n="3"><h3>Deklarasi Pemilu OSIS Damai</h3><p>Mengajak seluruh ketua kelas dan tim sukses kandidat menandatangani komitmen bersama untuk tidak menyebarkan isu SARA, hoaks, atau ujaran kebencian selama masa kampanye.</p></div>
+  </div>
+</div></section>
+
+<section id="kampanye"><div class="wrap">
+  <div class="rv center"><span class="tag">Materi 5</span><h2>Kampanye</h2></div>
+  <div class="slogan rv">“Saring Sebelum Sharing,<br><span class="grad">Demokrasi Sehat Dimulai dari Jempol Kita!</span>”</div>
+  <div class="poster rv">
+    <svg class="garuda" viewBox="0 0 200 200" role="img" aria-label="Garuda Pancasila"></svg>
+    <h4>PEMILU OSIS DAMAI<br>TANPA HOAKS</h4>
+    <p>Merdeka itu bertanggung jawab. Pilih dengan akal sehat, bukan karena hoaks.</p>
+    <div class="rules"><div>🔍 Cek fakta dulu</div><div>🚫 Stop ujaran kebencian</div><div>🤝 Hargai perbedaan</div><div>✅ Pilih lewat visi-misi</div></div>
+    <div class="tagline">#SaringSebelumSharing • #OSISDamaiSMKN7</div>
+  </div>
+  <div class="glass rv center"><h3>Ikrar Pemilu OSIS Damai</h3><p>Tulis namamu dan ikut berkomitmen!</p>
+    <div class="pledge">
+      <input id="nm" type="text" placeholder="Nama / kelas" maxlength="40" aria-label="Nama atau kelas" autocomplete="off">
+      <button id="btnIkrar" type="button">Saya Berjanji</button>
+    </div>
+    <div id="pl" aria-live="polite"></div></div>
+</div></section>
+
+<section id="kelompok"><div class="wrap">
+  <div class="rv center"><span class="tag">Tim Kami</span><h2>Anggota <span class="grad">Kelompok</span></h2>
+  <p class="sub" style="margin-left:auto;margin-right:auto">Disusun oleh siswa SMKN 7 untuk mata pelajaran PPKn.</p></div>
+  <div class="grid members">
+    <div class="glass rv mem"><div class="av">AZ</div><h3>Asyfa Zahra Saputri</h3><p>Absen 06</p></div>
+    <div class="glass rv mem"><div class="av">KA</div><h3>Katrin Anggraeni</h3><p>Absen 18</p></div>
+    <div class="glass rv mem"><div class="av">KC</div><h3>Klemens Christian Narayan</h3><p>Absen 22</p></div>
+    <div class="glass rv mem"><div class="av">LW</div><h3>Laurentius Wisnu Ardianto Putra</h3><p>Absen 23</p></div>
+    <div class="glass rv mem"><div class="av">MR</div><h3>Muhammad Raihan Ikhsan</h3><p>Absen 28</p></div>
+    <div class="glass rv mem"><div class="av">TH</div><h3>Tisya Harimia Gholta</h3><p>Absen 35</p></div>
+  </div>
+</div></section>
+
+<footer><i class="flag"></i>Merdeka! Merdeka! Merdeka!<br>“Saring sebelum sharing, demokrasi sehat dimulai dari jempol kita.”<br>Media Pembelajaran PPKn • SMKN 7</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  function $(s){return document.querySelector(s)}
+  function $$(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
+
+  /* 1. GARUDA: salin gambar sumber ke setiap <svg class="garuda"> (tanpa <use>) */
+  try{
+    var src=document.getElementById('garudaArt');
+    if(src){
+      $$('svg.garuda').forEach(function(svg){
+        var copy=src.cloneNode(true);
+        copy.removeAttribute('id');
+        svg.appendChild(copy);
+      });
+    }
+  }catch(err){
+    if(window.console)console.warn('Garuda gagal dimuat:',err);
+  }
+
+  /* 2. TAB Penyebab / Dampak / Kaitan Demokrasi / Solusi */
+  var tabBtns=$$('#tabs button'),panels=$$('.panel');
+  function openTab(btn){
+    var target=btn.getAttribute('data-t');
+    tabBtns.forEach(function(x){
+      var on=(x===btn);
+      x.classList.toggle('on',on);
+      x.setAttribute('aria-selected',on?'true':'false');
+    });
+    panels.forEach(function(p){p.classList.toggle('on',p.id===target)});
+  }
+  tabBtns.forEach(function(b){b.addEventListener('click',function(){openTab(b)})});
+
+  /* 3. SCROLL REVEAL (dengan fallback bila IntersectionObserver tidak ada) */
+  var rvEls=$$('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}
+      });
+    },{threshold:.12});
+    rvEls.forEach(function(el){io.observe(el)});
+  }else{
+    rvEls.forEach(function(el){el.classList.add('show')});
+  }
+
+  /* 4. PROGRESS BAR + NAVBAR AKTIF */
+  var bar=$('#bar'),nav=$('#nav'),links=$$('#nav a'),
+      secs=$$('header[id],section[id]'),ticking=false,lastCur=null;
+
+  function update(){
+    ticking=false;
+    var h=document.documentElement,
+        y=window.pageYOffset||h.scrollTop||0,
+        max=h.scrollHeight-h.clientHeight;
+    if(bar)bar.style.width=(max>0?Math.min(100,y/max*100):0)+'%';
+
+    var cur='';
+    secs.forEach(function(s){if(y>=s.offsetTop-200)cur=s.id});
+    if(max>0&&y>=max-4&&secs.length)cur=secs[secs.length-1].id;
+
+    links.forEach(function(a){
+      var on=(a.getAttribute('href')==='#'+cur);
+      a.classList.toggle('on',on);
+      if(on){a.setAttribute('aria-current','true')}else{a.removeAttribute('aria-current')}
+      if(on&&cur!==lastCur&&nav&&nav.scrollWidth>nav.clientWidth){
+        nav.scrollLeft=a.offsetLeft-(nav.clientWidth-a.offsetWidth)/2;
+      }
+    });
+    lastCur=cur;
+  }
+  function onScroll(){
+    if(!ticking){
+      ticking=true;
+      (window.requestAnimationFrame||function(f){return setTimeout(f,16)})(update);
+    }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  update();
+
+  /* 5. IKRAR "SAYA BERJANJI" */
+  function ikrar(){
+    var input=document.getElementById('nm'),out=document.getElementById('pl');
+    if(!input||!out)return;
+    var n=input.value.trim();
+    out.textContent='';
+    if(n){
+      var f=document.createElement('i');
+      f.className='flag';
+      out.appendChild(f);
+      out.appendChild(document.createTextNode(n+' berjanji tidak menyebarkan hoaks dan ujaran kebencian. Merdeka!'));
+    }else{
+      out.textContent='Silakan isi namamu dulu ya.';
+    }
+  }
+  var btn=document.getElementById('btnIkrar'),nm=document.getElementById('nm');
+  if(btn)btn.addEventListener('click',ikrar);
+  if(nm)nm.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();ikrar()}});
+})();
+</script>
+</body>
+</html>
